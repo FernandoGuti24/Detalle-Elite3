@@ -1,4 +1,4 @@
-<style>
+
         * {
             margin: 0;
             padding: 0;
@@ -43,16 +43,6 @@
             border-bottom-right-radius: var(--radius);
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            font-size: 180px;
-            position: absolute;
-            bottom: -50px;
-            right: -30px;
-            opacity: 0.06;
-            pointer-events: none;
         }
 
         .logo-area {
@@ -131,7 +121,6 @@
             color: var(--secondary);
         }
 
-        /* Estilo para cada opción de servicio con detalles integrados */
         .service-option {
             border: 2px solid #e2e8f0;
             border-radius: 1rem;
@@ -186,7 +175,7 @@
         }
 
         .service-details.open {
-            max-height: 800px; /* suficiente para mostrar la lista */
+            max-height: 800px;
             transition: max-height 0.5s ease-in;
         }
 
@@ -381,4 +370,4 @@
             border-top-left-radius: 1.5rem;
             border-top-right-radius: 1.5rem;
         }
-    </style>
+   

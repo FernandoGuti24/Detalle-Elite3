@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -21,7 +21,7 @@
                 <p>Professional mobile car detailing</p>
             </div>
         </div>
-        <h2>Premium at-home detailing service </h2>
+        <h2>Premium at-home detailing service</h2>
         <p>Choose your package, schedule your appointment, and receive instant confirmation</p>
     </div>
 </section>
@@ -32,11 +32,62 @@
         <div class="services-sidebar">
             <h3><i class="fas fa-star-of-life"></i> Detailing Packages</h3>
             <div id="service-list">
-                <!-- Cada opción ahora tiene su propio bloque de detalles colapsable -->
-                <div class="service-option selected" data-service="Basic Full Detailing" data-prices='{"sedan":110,"suv":130,"truck":150}'>
+                <!-- 1. BASIC EXTERIOR ONLY -->
+                <div class="service-option" data-service="Basic Exterior Only" data-prices='{"sedan":50,"suv":60,"truck":70}'>
                     <div class="service-header">
                         <div class="service-info">
-                            <div class="service-name"> Basic Full Detailing - BEST SELLER</div>
+                            <div class="service-name">Basic Exterior Only</div>
+                            <div class="service-price">Sedan $50 | SUV $60 | Truck $70</div>
+                        </div>
+                        <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="service-details">
+                        <div class="details-content">
+                            <ul>
+                                <li>✅ Proper hand wash</li>
+                                <li>✅ Tires degreased & tire shine</li>
+                                <li>✅ Full wheel cleaning</li>
+                                <li>✅ Removal of bug debris</li>
+                                <li>✅ Wheel fenders cleaned & shined</li>
+                                <li>✅ All exterior plastic trim shined</li>
+                                <li>✅ Exterior glass cleaned</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. BASIC INTERIOR ONLY -->
+                <div class="service-option" data-service="Basic Interior Only" data-prices='{"sedan":60,"suv":70,"truck":80}'>
+                    <div class="service-header">
+                        <div class="service-info">
+                            <div class="service-name">Basic Interior Only</div>
+                            <div class="service-price">Sedan $60 | SUV $70 | Truck $80</div>
+                        </div>
+                        <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="service-details">
+                        <div class="details-content">
+                            <ul>
+                                <li>✅ Complete interior vacuuming</li>
+                                <li>✅ Steam clean all interior surfaces (steering wheel, center console, turn signal lever)</li>
+                                <li>✅ Glass cleaned inside</li>
+                                <li>✅ Interior crevices blown out</li>
+                                <li>✅ All vents cleaned</li>
+                                <li>✅ Leather seats steam cleaned (if applicable)</li>
+                                <li>✅ Plastic mats cleaned & shined</li>
+                                <li>✅ All interior plastics shined with UV ray protectant</li>
+                                <li>✅ Trunk vacuumed (if emptied)</li>
+                                <li>✅ Air freshener</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. BASIC EXTERIOR AND INTERIOR (antes Full Detailing) -->
+                <div class="service-option selected" data-service="Basic Exterior and Interior" data-prices='{"sedan":110,"suv":130,"truck":150}'>
+                    <div class="service-header">
+                        <div class="service-info">
+                            <div class="service-name">Basic Exterior and Interior - BEST SELLER</div>
                             <div class="service-price">Sedan $110 | SUV $130 | Truck $150</div>
                         </div>
                         <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
@@ -64,80 +115,7 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="service-option" data-service="Basic Exterior Only" data-prices='{"sedan":50,"suv":60,"truck":70}'>
-                    <div class="service-header">
-                        <div class="service-info">
-                            <div class="service-name"> Basic Exterior Only</div>
-                            <div class="service-price">Sedan $50 | SUV $60 | Truck $70</div>
-                        </div>
-                        <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
-                    </div>
-                    <div class="service-details">
-                        <div class="details-content">
-                            <ul>
-                                <li>✅ Proper hand wash</li>
-                                <li>✅ Tires degreased & tire shine</li>
-                                <li>✅ Full wheel cleaning</li>
-                                <li>✅ Removal of bug debris</li>
-                                <li>✅ Wheel fenders cleaned & shined</li>
-                                <li>✅ All exterior plastic trim shined</li>
-                                <li>✅ Exterior glass cleaned</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-option" data-service="Basic Interior Only" data-prices='{"sedan":60,"suv":70,"truck":80}'>
-                    <div class="service-header">
-                        <div class="service-info">
-                            <div class="service-name"> Basic Interior Only</div>
-                            <div class="service-price">Sedan $60 | SUV $70 | Truck $80</div>
-                        </div>
-                        <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
-                    </div>
-                    <div class="service-details">
-                        <div class="details-content">
-                            <ul>
-                                <li>✅ Complete interior vacuuming</li>
-                                <li>✅ Steam clean all interior surfaces (steering wheel, center console, turn signal lever)</li>
-                                <li>✅ Glass cleaned inside</li>
-                                <li>✅ Interior crevices blown out</li>
-                                <li>✅ All vents cleaned</li>
-                                <li>✅ Leather seats steam cleaned (if applicable)</li>
-                                <li>✅ Plastic mats cleaned & shined</li>
-                                <li>✅ All interior plastics shined with UV ray protectant</li>
-                                <li>✅ Trunk vacuumed (if emptied)</li>
-                                <li>✅ Air freshener</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-option" data-service="Premium Full Detailing" data-prices='{"sedan":180,"suv":220,"truck":260}'>
-                    <div class="service-header">
-                        <div class="service-info">
-                            <div class="service-name"> Premium Full Detailing</div>
-                            <div class="service-price">Sedan $180 | SUV $220 | Truck $260</div>
-                        </div>
-                        <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
-                    </div>
-                    <div class="service-details">
-                        <div class="details-content">
-                            <ul>
-                                <li>✨ Everything in Basic Full Detailing, plus:</li>
-                                <li>🔹 Advanced paint decontamination (clay bar treatment)</li>
-                                <li>🔹 Single-stage machine polish to remove swirls</li>
-                                <li>🔹 High-quality synthetic wax or ceramic sealant</li>
-                                <li>🔹 Engine bay degreasing & dressing</li>
-                                <li>🔹 Ozone treatment to eliminate odors (interior)</li>
-                                <li>🔹 Leather conditioning & deep hydration</li>
-                                <li>🔹 Headlight restoration (if needed)</li>
-                                <li>🔹 Rain repellent on windows</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <!-- El paquete Premium ha sido eliminado (dejado vacío) según solicitud -->
             </div>
 
             <div class="vehicle-selector">
@@ -247,7 +225,7 @@
         initDatePicker();
         bindEvents();
         updateTotal();
-        setupServiceToggles(); // Configurar el colapso de detalles
+        setupServiceToggles();
     });
 
     function initDatePicker() {
@@ -283,7 +261,6 @@
         horaSelect.innerHTML = options;
     }
 
-    // Función para manejar el toggle de detalles en cada servicio
     function setupServiceToggles() {
         const serviceOptions = document.querySelectorAll('.service-option');
         serviceOptions.forEach(option => {
@@ -292,9 +269,7 @@
             const icon = header.querySelector('.toggle-icon i');
             
             header.addEventListener('click', (e) => {
-                // Evitar que el click en el header también active la selección del servicio
                 e.stopPropagation();
-                // Cerrar los demás? No, mejor solo toggle este
                 detailsDiv.classList.toggle('open');
                 if (icon) {
                     if (detailsDiv.classList.contains('open')) {
@@ -307,14 +282,8 @@
                 }
             });
             
-            // Al hacer clic en cualquier parte que no sea el header, seleccionamos el servicio
-            // pero no debemos interferir con el toggle. El header ya captura su propio click.
-            // Para la selección del servicio, usamos el contenedor principal pero sin el header?
-            // Mejor: agregar un listener en el .service-option que ignore el header.
             option.addEventListener('click', (e) => {
-                // Si el click fue en el header o dentro de él, no seleccionamos (porque ya se hizo toggle)
                 if (header.contains(e.target)) return;
-                // Seleccionar este servicio
                 document.querySelectorAll('.service-option').forEach(o => o.classList.remove('selected'));
                 option.classList.add('selected');
                 updateTotal();
@@ -323,7 +292,6 @@
     }
 
     function bindEvents() {
-        // Cambios en selects
         document.getElementById("vehicle-type").addEventListener("change", updateTotal);
         document.getElementById("extra-mascota").addEventListener("change", updateTotal);
         document.getElementById("extra-polish").addEventListener("change", updateTotal);
@@ -355,7 +323,6 @@
         return extras.length ? extras.join(", ") : "None";
     }
 
-    // ================= FUNCIÓN PRINCIPAL DE ENVÍO =================
     async function submitBooking() {
         console.log("🚀 Iniciando submitBooking...");
         
@@ -396,7 +363,7 @@
             if (!hora) throw new Error("Please select a time");
             
             const selectedService = document.querySelector(".service-option.selected");
-            const servicio = selectedService ? selectedService.getAttribute("data-service") : "Basic Full Detailing";
+            const servicio = selectedService ? selectedService.getAttribute("data-service") : "Basic Exterior and Interior";
             
             const vehicleSelect = document.getElementById("vehicle-type");
             const vehiculo = vehicleSelect ? vehicleSelect.options[vehicleSelect.selectedIndex].text : "Sedan";
