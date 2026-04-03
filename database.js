@@ -9,7 +9,7 @@ function initDatabase() {
         const dbPath = path.join(__dirname, 'bookings.db');
         db = new Database(dbPath);
 
-        // Crear tabla si no existe
+        // Crear tabla si no existea
         db.exec(`
             CREATE TABLE IF NOT EXISTS appointments (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
