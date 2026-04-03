@@ -32,7 +32,7 @@ function initDatabase() {
             )
         `);
 
-        // Índice para búsquedas rápidas
+        // Índice para búsquedas rápidasa
         db.exec(`
             CREATE INDEX IF NOT EXISTS idx_appointments_fecha_hora 
             ON appointments(fecha, hora)
