@@ -374,6 +374,7 @@ app.post("/api/agendar", async (req, res) => {
                         <p><strong>⏰ Hora:</strong> ${hora}</p>
                         <p><strong>📍 Dirección:</strong> ${direccion}</p>
                         <p><strong>🧼 Servicio:</strong> ${servicio}</p>
+                        <p><strong> Extras:</strong> ${extras}</p>
                         <p><strong>💰 Total:</strong> ${total}</p>
                     </div>
                 `
@@ -393,6 +394,7 @@ app.post("/api/agendar", async (req, res) => {
                         <p><strong>Fecha/Hora:</strong> ${fecha} ${hora}</p>
                         <p><strong>Dirección:</strong> ${direccion}</p>
                         <p><strong>Servicio:</strong> ${servicio}</p>
+                        <p><strong> Extras:</strong> ${extras}</p>
                         <p><strong>Total:</strong> ${total}</p>
                     </div>
                 `
