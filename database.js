@@ -32,7 +32,7 @@ function initDatabase() {
             )
         `);
 
-        // Índice para búsquedas rápidasa
+        // Índice para búsquedas rápidas
         db.exec(`
             CREATE INDEX IF NOT EXISTS idx_appointments_fecha_hora 
             ON appointments(fecha, hora)
@@ -99,10 +99,31 @@ function getAllAppointments() {
     return stmt.all();
 }
 
+// ========== NUEVA FUNCIÓN: Obtener todas las tablas y sus datos ==========
+function getAllTablesAndData() {
+    if (!db) throw new Error('DB no inicializada');
+    
+    const tables = db.prepare("SELECT name FROM sqlite_master WHERE type='table'").all();
+    const result = {};
+    
+    for (const table of tables) {
+        const tableName = table.name;
+        // Excluir tablas internas de SQLite
+        if (tableName === 'sqlite_sequence') continue;
+        
+        const rows = db.prepare(`SELECT * FROM ${tableName}`).all();
+        result[tableName] = rows;
+    }
+    
+    return result;
+}
+// ========================================================================
+
 module.exports = {
     saveAppointment,
     isSlotBooked,
     initDatabase,
     isInitialized: () => dbInitialized,
-    getAllAppointments
+    getAllAppointments,
+    getAllTablesAndData   // <-- Exportada para usarla en server.js
 };
