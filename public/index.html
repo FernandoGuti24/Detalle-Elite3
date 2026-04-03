@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Detail | Professional Car Detailing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<section class="hero">
+    <div class="container">
+        <div class="logo-area">
+            <div class="logo-icon"></div>
+            <div class="logo-text">
+                <h1>Elite Detail</h1>
+                <p>Professional mobile car detailing</p>
+            </div>
+        </div>
+        <h2>Premium at-home detailing service </h2>
+        <p>Choose your package, schedule your appointment, and receive instant confirmation</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="booking-wrapper">
+        <!-- LEFT PANEL -->
+        <div class="services-sidebar">
+            <h3><i class="fas fa-star-of-life"></i> Detailing Packages</h3>
+            <div id="service-list">
+                <!-- Cada opción ahora tiene su propio bloque de detalles colapsable -->
+                <div class="service-option selected" data-service="Basic Full Detailing" data-prices='{"sedan":110,"suv":130,"truck":150}'>
+                    <div class="service-header">
+                        <div class="service-info">
+                            <div class="service-name"> Basic Full Detailing - BEST SELLER</div>
+                            <div class="service-price">Sedan $110 | SUV $130 | Truck $150</div>
+                        </div>
+                        <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="service-details">
+                        <div class="details-content">
+                            <ul>
+                                <li>✅ Proper hand wash</li>
+                                <li>✅ Tires degreased & tire shine</li>
+                                <li>✅ Full wheel cleaning</li>
+                                <li>✅ Removal of bug debris</li>
+                                <li>✅ Wheel fenders cleaned & shined</li>
+                                <li>✅ All exterior plastic trim shined</li>
+                                <li>✅ Glass cleaned inside/out</li>
+                                <li>✅ Complete interior vacuuming</li>
+                                <li>✅ Steam clean all interior surfaces (steering wheel, center console, turn signal lever)</li>
+                                <li>✅ Interior crevices blown out</li>
+                                <li>✅ All vents cleaned</li>
+                                <li>✅ Leather seats steam cleaned (if applicable)</li>
+                                <li>✅ Plastic mats cleaned & shined</li>
+                                <li>✅ All interior plastics shined with UV ray protectant</li>
+                                <li>✅ Trunk vacuumed (if emptied)</li>
+                                <li>✅ Air freshener</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-option" data-service="Basic Exterior Only" data-prices='{"sedan":50,"suv":60,"truck":70}'>
+                    <div class="service-header">
+                        <div class="service-info">
+                            <div class="service-name"> Basic Exterior Only</div>
+                            <div class="service-price">Sedan $50 | SUV $60 | Truck $70</div>
+                        </div>
+                        <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="service-details">
+                        <div class="details-content">
+                            <ul>
+                                <li>✅ Proper hand wash</li>
+                                <li>✅ Tires degreased & tire shine</li>
+                                <li>✅ Full wheel cleaning</li>
+                                <li>✅ Removal of bug debris</li>
+                                <li>✅ Wheel fenders cleaned & shined</li>
+                                <li>✅ All exterior plastic trim shined</li>
+                                <li>✅ Exterior glass cleaned</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-option" data-service="Basic Interior Only" data-prices='{"sedan":60,"suv":70,"truck":80}'>
+                    <div class="service-header">
+                        <div class="service-info">
+                            <div class="service-name"> Basic Interior Only</div>
+                            <div class="service-price">Sedan $60 | SUV $70 | Truck $80</div>
+                        </div>
+                        <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="service-details">
+                        <div class="details-content">
+                            <ul>
+                                <li>✅ Complete interior vacuuming</li>
+                                <li>✅ Steam clean all interior surfaces (steering wheel, center console, turn signal lever)</li>
+                                <li>✅ Glass cleaned inside</li>
+                                <li>✅ Interior crevices blown out</li>
+                                <li>✅ All vents cleaned</li>
+                                <li>✅ Leather seats steam cleaned (if applicable)</li>
+                                <li>✅ Plastic mats cleaned & shined</li>
+                                <li>✅ All interior plastics shined with UV ray protectant</li>
+                                <li>✅ Trunk vacuumed (if emptied)</li>
+                                <li>✅ Air freshener</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-option" data-service="Premium Full Detailing" data-prices='{"sedan":180,"suv":220,"truck":260}'>
+                    <div class="service-header">
+                        <div class="service-info">
+                            <div class="service-name"> Premium Full Detailing</div>
+                            <div class="service-price">Sedan $180 | SUV $220 | Truck $260</div>
+                        </div>
+                        <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="service-details">
+                        <div class="details-content">
+                            <ul>
+                                <li>✨ Everything in Basic Full Detailing, plus:</li>
+                                <li>🔹 Advanced paint decontamination (clay bar treatment)</li>
+                                <li>🔹 Single-stage machine polish to remove swirls</li>
+                                <li>🔹 High-quality synthetic wax or ceramic sealant</li>
+                                <li>🔹 Engine bay degreasing & dressing</li>
+                                <li>🔹 Ozone treatment to eliminate odors (interior)</li>
+                                <li>🔹 Leather conditioning & deep hydration</li>
+                                <li>🔹 Headlight restoration (if needed)</li>
+                                <li>🔹 Rain repellent on windows</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vehicle-selector">
+                <label><i class="fas fa-car-side"></i> Vehicle type</label>
+                <select id="vehicle-type">
+                    <option value="sedan">Sedan</option>
+                    <option value="suv">SUV / Crossover</option>
+                    <option value="truck">Truck / Pickup</option>
+                </select>
+            </div>
+
+            <div class="extras-check">
+                <h4><i class="fas fa-plus-circle"></i> Extra services</h4>
+                <div class="extra-item">
+                    <span><i class="fas fa-dog"></i> Pet hair removal</span>
+                    <select id="extra-mascota">
+                        <option value="0">No extra</option>
+                        <option value="20">+$20 (light)</option>
+                        <option value="35">+$35 (moderate)</option>
+                        <option value="50">+$50 (heavy)</option>
+                    </select>
+                </div>
+                <div class="extra-item">
+                    <span><i class="fas fa-tint"></i> Paint correction</span>
+                    <select id="extra-polish">
+                        <option value="0">No extra</option>
+                        <option value="40">+$40 (single stage)</option>
+                        <option value="75">+$75 (two stage)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="info-total" id="total-preview"> Estimated total: $0</div>
+        </div>
+
+        <!-- RIGHT PANEL - FORM -->
+        <div class="form-card">
+            <h3><i class="fas fa-calendar-alt"></i> Schedule your appointment</h3>
+            <form id="booking-form" onsubmit="return false;">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Full name *</label>
+                    <input type="text" id="nombre" placeholder="Ex: Maria Gonzalez" required>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> Email *</label>
+                    <input type="email" id="email" placeholder="client@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-phone"></i> Phone</label>
+                    <input type="tel" id="telefono" placeholder="+1 123 456 7890">
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-map-marker-alt"></i> Address *</label>
+                    <textarea id="direccion" rows="2" placeholder="Complete address" required></textarea>
+                </div>
+                
+                <div class="datetime-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-calendar"></i> Date *</label>
+                        <input type="text" id="fecha" placeholder="Select date" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-clock"></i> Time *</label>
+                        <select id="hora" required>
+                            <option value="">-- Select --</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-comment"></i> Comments</label>
+                    <textarea id="comentarios" rows="2" placeholder="Additional info..."></textarea>
+                </div>
+                
+                <div id="status-message" class="message-status"></div>
+                
+                <button type="button" class="btn-submit" id="submitBtn" onclick="submitBooking()">
+                    <i class="fas fa-check-circle"></i> Confirm appointment
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Elite Detail — Premium car detailing</p>
+    </div>
+</footer>
+
+<script>
+    // ================= CONFIGURACIÓN =================
+    const API_URL = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+        ? "http://localhost:3012/api/agendar"
+        : "/api/agendar";
+
+    // ================= VARIABLES GLOBALES =================
+    let flatpickrInstance;
+    let occupiedSlots = [];
+
+    // ================= INICIALIZACIÓN =================
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log("✅ DOM cargado, inicializando...");
+        initDatePicker();
+        bindEvents();
+        updateTotal();
+        setupServiceToggles(); // Configurar el colapso de detalles
+    });
+
+    function initDatePicker() {
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        const maxDate = new Date();
+        maxDate.setDate(today.getDate() + 30);
+
+        flatpickrInstance = flatpickr("#fecha", {
+            minDate: today,
+            maxDate: maxDate,
+            dateFormat: "Y-m-d",
+            disable: [function(date) { return date.getDay() === 0; }],
+            onChange: function(selectedDates, dateStr) {
+                updateHourSelect(dateStr);
+            }
+        });
+    }
+
+    const AVAILABLE_HOURS = ["09:00", "10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00", "18:00"];
+
+    function updateHourSelect(selectedDate) {
+        const horaSelect = document.getElementById("hora");
+        if(!selectedDate) {
+            horaSelect.innerHTML = '<option value="">-- First select date --</option>';
+            return;
+        }
+        
+        let options = '<option value="">-- Select time --</option>';
+        AVAILABLE_HOURS.forEach(hour => {
+            options += `<option value="${hour}">${hour}</option>`;
+        });
+        horaSelect.innerHTML = options;
+    }
+
+    // Función para manejar el toggle de detalles en cada servicio
+    function setupServiceToggles() {
+        const serviceOptions = document.querySelectorAll('.service-option');
+        serviceOptions.forEach(option => {
+            const header = option.querySelector('.service-header');
+            const detailsDiv = option.querySelector('.service-details');
+            const icon = header.querySelector('.toggle-icon i');
+            
+            header.addEventListener('click', (e) => {
+                // Evitar que el click en el header también active la selección del servicio
+                e.stopPropagation();
+                // Cerrar los demás? No, mejor solo toggle este
+                detailsDiv.classList.toggle('open');
+                if (icon) {
+                    if (detailsDiv.classList.contains('open')) {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    } else {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
+                }
+            });
+            
+            // Al hacer clic en cualquier parte que no sea el header, seleccionamos el servicio
+            // pero no debemos interferir con el toggle. El header ya captura su propio click.
+            // Para la selección del servicio, usamos el contenedor principal pero sin el header?
+            // Mejor: agregar un listener en el .service-option que ignore el header.
+            option.addEventListener('click', (e) => {
+                // Si el click fue en el header o dentro de él, no seleccionamos (porque ya se hizo toggle)
+                if (header.contains(e.target)) return;
+                // Seleccionar este servicio
+                document.querySelectorAll('.service-option').forEach(o => o.classList.remove('selected'));
+                option.classList.add('selected');
+                updateTotal();
+            });
+        });
+    }
+
+    function bindEvents() {
+        // Cambios en selects
+        document.getElementById("vehicle-type").addEventListener("change", updateTotal);
+        document.getElementById("extra-mascota").addEventListener("change", updateTotal);
+        document.getElementById("extra-polish").addEventListener("change", updateTotal);
+    }
+
+    function updateTotal() {
+        const selectedService = document.querySelector(".service-option.selected");
+        if(!selectedService) return 0;
+        
+        const prices = JSON.parse(selectedService.getAttribute("data-prices"));
+        const vehicle = document.getElementById("vehicle-type").value;
+        let total = prices[vehicle] || 0;
+        
+        total += parseInt(document.getElementById("extra-mascota").value) || 0;
+        total += parseInt(document.getElementById("extra-polish").value) || 0;
+        
+        document.getElementById("total-preview").innerHTML = ` Estimated total: $${total}`;
+        return total;
+    }
+
+    function getExtrasText() {
+        const extras = [];
+        const mascota = document.getElementById("extra-mascota").value;
+        const polish = document.getElementById("extra-polish").value;
+        
+        if(mascota != 0) extras.push(`Pet hair +$${mascota}`);
+        if(polish != 0) extras.push(`Polish +$${polish}`);
+        
+        return extras.length ? extras.join(", ") : "None";
+    }
+
+    // ================= FUNCIÓN PRINCIPAL DE ENVÍO =================
+    async function submitBooking() {
+        console.log("🚀 Iniciando submitBooking...");
+        
+        const statusDiv = document.getElementById("status-message");
+        const submitBtn = document.getElementById("submitBtn");
+        
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        statusDiv.style.display = "none";
+        
+        try {
+            const nombreEl = document.getElementById("nombre");
+            const emailEl = document.getElementById("email");
+            const telefonoEl = document.getElementById("telefono");
+            const direccionEl = document.getElementById("direccion");
+            const fechaEl = document.getElementById("fecha");
+            const horaEl = document.getElementById("hora");
+            const comentariosEl = document.getElementById("comentarios");
+            
+            if (!nombreEl || !emailEl || !direccionEl || !fechaEl || !horaEl) {
+                throw new Error("Error: No se encontraron los campos del formulario");
+            }
+            
+            const nombre = nombreEl.value.trim();
+            const email = emailEl.value.trim();
+            const telefono = telefonoEl ? telefonoEl.value.trim() : "";
+            const direccion = direccionEl.value.trim();
+            const fecha = fechaEl.value.trim();
+            const hora = horaEl.value.trim();
+            const comentarios = comentariosEl ? comentariosEl.value.trim() : "";
+            
+            console.log("📋 Valores obtenidos:", { nombre, email, direccion, fecha, hora });
+            
+            if (!nombre) throw new Error("Please enter your full name");
+            if (!email || !email.includes("@")) throw new Error("Please enter a valid email");
+            if (!direccion) throw new Error("Please enter your address");
+            if (!fecha) throw new Error("Please select a date");
+            if (!hora) throw new Error("Please select a time");
+            
+            const selectedService = document.querySelector(".service-option.selected");
+            const servicio = selectedService ? selectedService.getAttribute("data-service") : "Basic Full Detailing";
+            
+            const vehicleSelect = document.getElementById("vehicle-type");
+            const vehiculo = vehicleSelect ? vehicleSelect.options[vehicleSelect.selectedIndex].text : "Sedan";
+            
+            const total = updateTotal();
+            const extras = getExtrasText();
+            
+            const bookingData = {
+                nombre: nombre,
+                email: email,
+                telefono: telefono,
+                direccion: direccion,
+                fecha: fecha,
+                hora: hora,
+                servicio: servicio,
+                vehiculo: vehiculo,
+                extras: extras,
+                total: `$${total}`,
+                comentarios: comentarios
+            };
+            
+            console.log("📤 Enviando al servidor:", JSON.stringify(bookingData, null, 2));
+            
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(bookingData)
+            });
+            
+            console.log("📥 Respuesta del servidor:", response.status, response.statusText);
+            const result = await response.json();
+            console.log("📄 Datos de respuesta:", result);
+            
+            if (!response.ok) {
+                throw new Error(result.error || `Server error: ${response.status}`);
+            }
+            
+            showStatus(`✅ ${result.message} - ID: ${result.bookingId}`, "success");
+            
+            // Reset form
+            document.getElementById("booking-form").reset();
+            if (flatpickrInstance) flatpickrInstance.clear();
+            document.getElementById("hora").innerHTML = '<option value="">-- Select --</option>';
+            updateTotal();
+            
+        } catch (error) {
+            console.error("❌ Error en submitBooking:", error);
+            showStatus(error.message, "error");
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Confirm appointment';
+        }
+    }
+
+    function showStatus(message, type) {
+        const statusDiv = document.getElementById("status-message");
+        statusDiv.textContent = message;
+        statusDiv.className = `message-status ${type}`;
+        statusDiv.style.display = "block";
+        statusDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+</script>
+</body>
+</html>
