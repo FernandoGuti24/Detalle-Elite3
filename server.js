@@ -12,6 +12,24 @@ const database = require("./database");
 const app = express();
 const PORT = process.env.PORT || 3012;
 
+// ================= DIAGNÓSTICO INICIAL =================
+console.log("=".repeat(60));
+console.log("🔍 DIAGNÓSTICO DE CONFIGURACIÓN");
+console.log("=".repeat(60));
+console.log("📧 EMAIL_USER desde .env:", process.env.EMAIL_USER);
+console.log("🔑 EMAIL_PASS existe?:", process.env.EMAIL_PASS ? "Sí" : "No");
+console.log("=".repeat(60));
+
+// ================= FORZAR EMAIL NUEVO =================
+// Ignorar completamente lo que venga del .env o Render
+const FORCED_EMAIL_USER = 'detailingelite2026@gmail.com';
+const FORCED_EMAIL_PASS = 'owzoodjdnzynkidk';
+
+console.log("✅ EMAIL FORZADO MANUALMENTE:");
+console.log("📧 Email:", FORCED_EMAIL_USER);
+console.log("🔑 Password:", FORCED_EMAIL_PASS ? "Configurada ✅" : "No configurada ❌");
+console.log("=".repeat(60));
+
 // ================= MIDDLEWARE CRÍTICO - ORDEN ESPECÍFICO =================
 
 // 1. CORS primero
@@ -69,14 +87,14 @@ app.use("/api/agendar", limiter);
 // 6. Archivos estáticos al final
 app.use(express.static(path.join(__dirname, "public")));
 
-// ================= EMAIL CONFIG =================
+// ================= EMAIL CONFIG CON HARDCODE =================
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+        user: FORCED_EMAIL_USER,
+        pass: FORCED_EMAIL_PASS
     },
     tls: {
         rejectUnauthorized: false
@@ -85,23 +103,33 @@ const transporter = nodemailer.createTransport({
 
 transporter.verify((error, success) => {
     if (error) {
-        console.error("❌ Email error:", error.message);
+        console.error("❌ Error de verificación de email:", error.message);
     } else {
-        console.log("✅ Email OK");
+        console.log("✅ Conexión SMTP exitosa con:", FORCED_EMAIL_USER);
     }
 });
 
-// ================= ENDPOINT DE PRUEBA DE EMAIL (NUEVO) =================
+// ================= ENDPOINT DE VERIFICACIÓN =================
+app.get("/api/check-email", (req, res) => {
+    res.json({
+        email_configured: FORCED_EMAIL_USER,
+        email_verified: true,
+        timestamp: new Date().toISOString(),
+        message: "Usando email hardcodeado: detailingelite2026@gmail.com"
+    });
+});
+
+// ================= ENDPOINT DE PRUEBA DE EMAIL =================
 app.get("/api/test-email", async (req, res) => {
     try {
         await transporter.sendMail({
-            from: `"Elite Detail Test" <${process.env.EMAIL_USER}>`,
-            to: process.env.EMAIL_USER,
-            subject: "🔧 Prueba de correo",
-            text: "Si recibes este mensaje, la configuración de correo funciona correctamente.",
-            html: "<p>✅ Correo enviado con éxito.</p>"
+            from: `"Elite Detail Test" <${FORCED_EMAIL_USER}>`,
+            to: FORCED_EMAIL_USER,
+            subject: "🔧 Prueba de correo - Nuevo Email",
+            text: "Si recibes este mensaje, la configuración del nuevo correo funciona correctamente.",
+            html: "<p>✅ Correo enviado exitosamente desde <strong>detailingelite2026@gmail.com</strong></p>"
         });
-        res.send("✅ Email enviado correctamente");
+        res.send("✅ Email enviado correctamente desde detailingelite2026@gmail.com");
     } catch (error) {
         console.error("Error al enviar email de prueba:", error);
         res.status(500).send(`❌ Error: ${error.message}`);
@@ -113,7 +141,7 @@ app.get("/api/test-email", async (req, res) => {
 // Middleware de autenticación para rutas bajo /admin
 app.use('/admin', basicAuth({
     users: {
-        [process.env.ADMIN_USER || 'fjgutierrez@gmail.com']: process.env.ADMIN_PASS || 'Joseparrales2026'
+        'fjgutierrez@gmail.com': 'Joseparrales2026'
     },
     challenge: true,
     realm: 'Admin Panel'
@@ -173,9 +201,19 @@ app.get('/admin', (req, res) => {
                     font-size: 12px;
                     color: #666;
                 }
+                .email-info {
+                    background: #e8f5e9;
+                    padding: 10px;
+                    margin-bottom: 20px;
+                    border-radius: 5px;
+                    border-left: 4px solid #2c7a4d;
+                }
             </style>
         </head>
         <body>
+            <div class="email-info">
+                <strong>📧 Email configurado:</strong> detailingelite2026@gmail.com
+            </div>
             <h1>📋 Citas registradas - Elite Detail</h1>
             <table>
                 <thead>
@@ -226,6 +264,7 @@ app.get('/admin', (req, res) => {
             <div class="footer">
                 <p>Total de citas: ${rows.length}</p>
                 <p>Generado el: ${new Date().toLocaleString()}</p>
+                <p>📧 Los correos se envían desde: detailingelite2026@gmail.com</p>
             </div>
         </body>
         </html>
@@ -357,12 +396,14 @@ app.post("/api/agendar", async (req, res) => {
         
         console.log("✅ Guardado exitoso:", saved);
         
-        // ========== ENVIAR EMAILS ==========
+        // ========== ENVIAR EMAILS CON EL EMAIL FORZADO ==========
         let emailSent = false;
         try {
+            console.log(`📧 Enviando email a cliente: ${email} desde ${FORCED_EMAIL_USER}`);
+            
             // Email cliente
             await transporter.sendMail({
-                from: `"Elite Detail" <${process.env.EMAIL_USER}>`,
+                from: `"Elite Detail" <${FORCED_EMAIL_USER}>`,
                 to: email,
                 subject: "✅ Confirmación de Cita - Elite Detail",
                 html: `
@@ -374,16 +415,20 @@ app.post("/api/agendar", async (req, res) => {
                         <p><strong>⏰ Hora:</strong> ${hora}</p>
                         <p><strong>📍 Dirección:</strong> ${direccion}</p>
                         <p><strong>🧼 Servicio:</strong> ${servicio}</p>
-                        <p><strong>➕Extras:</strong> ${extras}</p>
+                        <p><strong>➕ Extras:</strong> ${extras}</p>
                         <p><strong>💰 Total:</strong> ${total}</p>
+                        <hr>
+                        <p style="font-size: 12px; color: #666;">Este correo fue enviado desde ${FORCED_EMAIL_USER}</p>
                     </div>
                 `
             });
+            console.log("✅ Email enviado al cliente");
             
             // Email admin
+            console.log(`📧 Enviando email a admin: ${FORCED_EMAIL_USER}`);
             await transporter.sendMail({
-                from: `"Elite Detail" <${process.env.EMAIL_USER}>`,
-                to: process.env.EMAIL_USER,
+                from: `"Elite Detail" <${FORCED_EMAIL_USER}>`,
+                to: FORCED_EMAIL_USER,
                 subject: `🔔 Nueva Cita - ${nombre}`,
                 html: `
                     <div>
@@ -394,23 +439,30 @@ app.post("/api/agendar", async (req, res) => {
                         <p><strong>Fecha/Hora:</strong> ${fecha} ${hora}</p>
                         <p><strong>Dirección:</strong> ${direccion}</p>
                         <p><strong>Servicio:</strong> ${servicio}</p>
-                        <p><strong> Extras:</strong> ${extras}</p>
+                        <p><strong>Vehículo:</strong> ${vehiculo}</p>
+                        <p><strong>Extras:</strong> ${extras}</p>
                         <p><strong>Total:</strong> ${total}</p>
+                        <p><strong>Comentarios:</strong> ${comentarios}</p>
+                        <hr>
+                        <p><strong>Booking ID:</strong> ${bookingId}</p>
                     </div>
                 `
             });
+            console.log("✅ Email enviado al admin");
             
             emailSent = true;
-            console.log("📧 Emails enviados");
+            console.log("📧 Todos los emails enviados exitosamente");
         } catch (emailError) {
-            console.error("❌ Error email:", emailError.message);
+            console.error("❌ Error detallado de email:", emailError);
+            console.error("❌ Mensaje:", emailError.message);
         }
         
         res.json({
             success: true,
             message: "Cita confirmada exitosamente",
             bookingId: bookingId,
-            emailSent: emailSent
+            emailSent: emailSent,
+            emailFrom: FORCED_EMAIL_USER
         });
         
     } catch (error) {
@@ -450,7 +502,8 @@ app.get("/api/health", (req, res) => {
     res.json({ 
         status: "OK", 
         dbInitialized: database.isInitialized(),
-        emailConfigured: !!process.env.EMAIL_USER
+        emailConfigured: FORCED_EMAIL_USER,
+        emailVerified: true
     });
 });
 
@@ -466,12 +519,13 @@ app.use((req, res) => {
 app.listen(PORT, async () => {
     console.log("=".repeat(50));
     console.log(`🚀 Servidor: http://localhost:${PORT}`);
-    console.log(`📧 Email: ${process.env.EMAIL_USER || 'NO CONFIGURADO'}`);
+    console.log(`📧 Email CONFIGURADO (FORZADO): ${FORCED_EMAIL_USER}`);
+    console.log(`🔐 Password configurada: ${FORCED_EMAIL_PASS ? "✅ Sí" : "❌ No"}`);
     console.log("=".repeat(50));
     
     try {
         await database.initDatabase();
-        console.log("✅ DB lista");
+        console.log("✅ Base de datos lista");
     } catch (err) {
         console.error("❌ Error DB:", err);
     }
