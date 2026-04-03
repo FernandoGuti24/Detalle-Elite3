@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f3b2c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1c5e3a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2c7a4d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e5e3a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a3e635;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ade80;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Círculo de fondo -->
+  <circle cx="256" cy="256" r="240" fill="url(#bgGrad)" />
+
+  <!-- Escudo principal (protección / calidad) -->
+  <path d="M256 64 L380 120 L380 240 C380 340 320 400 256 448 C192 400 132 340 132 240 L132 120 Z" 
+        fill="url(#shieldGrad)" stroke="#a3e635" stroke-width="8" stroke-linejoin="round" />
+
+  <!-- Detalle de brillo en el escudo -->
+  <path d="M256 96 L348 140 L348 240 C348 322 300 376 256 416 C212 376 164 322 164 240 L164 140 Z" 
+        fill="none" stroke="#4ade80" stroke-width="2" opacity="0.4" />
+
+  <!-- Silueta de auto deportivo estilizado -->
+  <path d="M176 256 L192 224 L240 216 L272 216 L320 224 L336 256 L328 280 L296 280 L280 264 L232 264 L216 280 L184 280 Z" 
+        fill="#e8f3ec" stroke="#a3e635" stroke-width="4" stroke-linejoin="round" />
+
+  <!-- Ventanas del auto -->
+  <path d="M210 232 L240 224 L270 224 L300 232 L300 250 L210 250 Z" 
+        fill="#cbd5e1" stroke="#a3e635" stroke-width="2" />
+
+  <!-- Detalle de ruedas -->
+  <circle cx="210" cy="276" r="14" fill="#1e293b" stroke="#a3e635" stroke-width="3" />
+  <circle cx="302" cy="276" r="14" fill="#1e293b" stroke="#a3e635" stroke-width="3" />
+
+  <!-- Rayo de brillo / detalle "premium" -->
+  <path d="M360 160 L380 150 L370 170 Z" fill="#a3e635" opacity="0.8" />
+  <path d="M380 180 L400 175 L390 195 Z" fill="#4ade80" opacity="0.6" />
+
+  <!-- Anillo exterior decorativo -->
+  <circle cx="256" cy="256" r="224" fill="none" stroke="#a3e635" stroke-width="2" stroke-dasharray="10 8" opacity="0.5" />
+
+  <!-- Estrellas de calidad (esquinas) -->
+  <circle cx="120" cy="120" r="8" fill="#a3e635" />
+  <circle cx="392" cy="120" r="8" fill="#a3e635" />
+  <circle cx="120" cy="392" r="8" fill="#a3e635" />
+  <circle cx="392" cy="392" r="8" fill="#a3e635" />
+</svg>
